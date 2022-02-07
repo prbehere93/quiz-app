@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %} Quiz Details {% endblock title %}
 
+{% block scripts %}
+    <script src="{% static 'quizes/quiz.js' %}" defer></script>
+{% endblock scripts %}
+
 {% block content %} 
-    <div>    
-        {{quiz.get_questions}}
+    <div class="col-6">    
+        {% for question in quiz.question_set.all %}
+            <h3>{{ question }}</h3>
+        {% endfor %}
     </div>
 {% endblock content %}
